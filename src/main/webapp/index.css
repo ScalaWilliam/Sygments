@@ -1,0 +1,64 @@
+body {
+    overflow-y: scroll;
+}
+.bg {
+    z-index:-5;
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+}
+.bg img {
+    width:100%;
+    z-index:-6;
+}
+.bg-over {
+    position:fixed;
+    z-index:-4;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+}
+#code pre {
+    color:white;
+    font-family: Consolas, monospace;
+    background-color:rgba(0,0,0,0.01) !important;
+    font-size:20px;
+    border:none !important;
+}
+body {
+    background-image: url('Wallpaper_1_by_Antscape.jpg');
+    background-size: 100%;
+}
+#input {
+    font-family: Consolas, monospace;
+    opacity:0.5;
+    overflow-x:hidden;
+}
+#input:focus {
+    opacity:1;
+}
+#file-select {
+    display:none;
+}
+#languages-select {
+    cursor:pointer;
+}
+#theme-text {
+    color:white !important;
+}
+#navbar-main {
+    cursor:default;
+}
+#central-part {
+    margin-top:5em;
+}
+.page-header {
+    text-shadow: 1px 1px 1px black,
+    -1px 1px 1px black,
+    -1px -1px 1px black,
+    1px -1px 1px black
+;
+}

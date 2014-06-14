@@ -1,0 +1,86 @@
+<!doctype html>
+<html ng-app="yay" ng-controller="Root">
+<head>
+    <title>Sygments &mdash; Scala William</title>
+    <script src="webjars/angularjs/1.2.16/angular.min.js"></script>
+    <script src="webjars/angularjs/1.2.16/angular-sanitize.min.js"></script>
+    <script src="webjars/angular-ui-bootstrap/0.11.0/ui-bootstrap.min.js"></script>
+    <script src="webjars/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="webjars/jquery/1.9.0/jquery.min.js"></script>
+    <script src="extras/upload-to-dom-image.js"></script>
+    <script src="extras/image-upload.js"></script>
+    <script src="extras/dropdowns-enhancement.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="extras/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="styles/{{currentStyle.id}}.css" type="text/css"/>
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+    <link rel="stylesheet" href="extras/dropdowns-enhancement.css" type="text/css"/>
+</head>
+<body>
+<div ng-controller="Sygments">
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="https://www.scalawilliam.com/1406/sygments" class="navbar-brand">Scala William's Sygments</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a ng-click="triggerSelect()" type="button" class="btn">Change background</a>
+                        <input type="file" ng-file-select="changeImage($files)" id="file-select"/>
+                    </li>
+                    <li class="dropdown" class="btn-group">
+                        <a data-toggle="dropdown" class="dropdown-toggle" id="languages-select">Scala <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="language in languages">
+                                <input type="radio" id="switch-{{language}}" ng-model="state.language" name="state.language" value="{{language}}" ng-change="highlight()"><label for="switch-{{language}}">{{language}}</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><span id="theme-text">Theme:&nbsp;&nbsp;</span>
+                        <div class="btn-group" data-toggle="currentStyle.id">
+                            <styles ng-repeat="style in styles">
+                                <button ng-model="currentStyle.id" type="button" btn-radio="style" class="btn btn-default btn-xs">{{style}}</button>
+                            </styles>
+                        </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a target="_blank" href="https://github.com/ScalaWilliam/Sygments">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid" id="central-part">
+        <div class="page-header">
+            <p>Find the best theme to highlight your code with for presentations. Then copy & paste.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <textarea wrap="off" id="input" ng-model="state.code" class="form-control" rows="20" ng-keyup="highlight()"></textarea>
+            </div>
+            <div class="col-md-8" id="RR">
+                <div id="code" ng-bind-html="contents"></div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-repeat="item in uploader.queue | limitTo:-1">
+        <div ng-background="{ file: item.file }" class="bg"><img src="bg.png"/></div>
+    </div>
+
+    <div class="bg-over"></div>
+
+</div>
+
+</body>
+</html>
