@@ -40,23 +40,23 @@ sygmentsApp.controller('Sygments', function($scope, $http, $fileUploader) {
     };
 
     $scope.languages = [
-        'Scala',
-        'XQuery',
+        'Clojure',
         'CoffeeScript',
         'C#',
-        'JavaScript',
-        'Java',
-        'XSLT',
-        'XML',
-        'F#',
-        'Python',
-        'HTML',
-        'Ruby',
-        'Haskell',
-        'OCaml',
         'Erlang',
+        'F#',
+        'Haskell',
+        'HTML',
+        'Java',
+        'JavaScript',
         'Lua',
-        'Clojure'
+        'OCaml',
+        'Python',
+        'Ruby',
+        'Scala',
+        'XML',
+        'XQuery',
+        'XSLT'
     ];
 
     $http.get("samples.xml").success(function(data) {
