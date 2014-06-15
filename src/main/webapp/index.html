@@ -2,7 +2,7 @@
 <html ng-app="yay" ng-controller="Root">
 <head>
     <title>Sygments &mdash; Scala William</title>
-    <script src="webjars/angularjs/1.2.16/angular.min.js"></script>
+    <script src="webjars/angularjs/1.2.16/angular.js"></script>
     <script src="webjars/angularjs/1.2.16/angular-sanitize.min.js"></script>
     <script src="webjars/angular-ui-bootstrap/0.11.0/ui-bootstrap.min.js"></script>
     <script src="webjars/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>
@@ -18,8 +18,8 @@
 </head>
 <body>
 <div ng-controller="Sygments">
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+    <div class="navbar navbar-default">
+        <div class="container-fluid" id="container-upper">
             <div class="navbar-header">
                 <a href="https://www.scalawilliam.com/1406/sygments" class="navbar-brand">Scala William's Sygments</a>
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
@@ -35,21 +35,20 @@
                         <input type="file" ng-file-select="changeImage($files)" id="file-select"/>
                     </li>
                     <li class="dropdown" class="btn-group">
-                        <a data-toggle="dropdown" class="dropdown-toggle" id="languages-select">Scala <span class="caret"></span></a>
+                        <a data-toggle="dropdown" class="dropdown-toggle" id="languages-select">{{state.language}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li ng-repeat="language in languages">
-                                <input type="radio" id="switch-{{language}}" ng-model="state.language" name="state.language" value="{{language}}" ng-change="highlight()"><label for="switch-{{language}}">{{language}}</label>
+                                <input type="radio" id="switch-{{language}}" ng-model="state.language" name="stateLanguage" value="{{language}}" ng-change="highlight()"><label for="switch-{{language}}">{{language}}</label>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a><span id="theme-text">Theme:&nbsp;&nbsp;</span>
-                        <div class="btn-group" data-toggle="currentStyle.id">
-                            <styles ng-repeat="style in styles">
-                                <button ng-model="currentStyle.id" type="button" btn-radio="style" class="btn btn-default btn-xs">{{style}}</button>
-                            </styles>
-                        </div>
-                        </a>
+                    <li class="dropdown" class="btn-group" ng-show="samples.length">
+                        <a data-toggle="dropdown" class="dropdown-toggle" id="samples-select">Load sample<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="sample in samples">
+                                <a ng-click="loadSample(sample)" href="#">{{sample.language}}</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -57,16 +56,37 @@
                 </ul>
             </div>
         </div>
+        <div class="container-fluid" id="container-lower">
+            <div class="navbar-collapse collapse" id="navbar-lower">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a><span id="theme-text">Theme:&nbsp;&nbsp;</span>
+                            <div class="btn-group" data-toggle="currentStyle.id">
+                                <styles ng-repeat="style in styles">
+                                    <button ng-model="currentStyle.id" type="button" btn-radio="style" class="btn btn-default btn-xs">{{style}}</button>
+                                </styles>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-
     <div class="container-fluid" id="central-part">
-        <div class="page-header">
-            <p>Find the best theme to highlight your code with for presentations. Then copy & paste.</p>
+        <div class="row" id="instruction">
         </div>
         <div class="row">
             <div class="col-md-4">
-                <textarea wrap="off" id="input" ng-model="state.code" class="form-control" rows="20" ng-keyup="highlight()"></textarea>
+                <div ng-show="!hideAlert">
+                    <alert type="info" close="hideAlert=true">
+                        Find the best theme to highlight your code with for presentations.<br/>
+                        Paste code in, copy output to your presentation or tutorial.<br/>
+                        Use Chrome DevTools to create custom themes.
+                    </alert>
+                </div>
+                <textarea wrap="off" id="input" ng-model="state.code" class="form-control" rows="20" ng-keyup="state.sampled = false;highlight()"></textarea>
+                <p id="codeSource" ng-show="state.sampled">A code sample from <a target="_blank" href="{{state.sampleSource}}">{{state.sampleSource}}</a></p>
             </div>
             <div class="col-md-8" id="RR">
                 <div id="code" ng-bind-html="contents"></div>

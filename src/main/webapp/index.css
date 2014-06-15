@@ -25,7 +25,7 @@ body {
     color:white;
     font-family: Consolas, monospace;
     background-color:rgba(0,0,0,0.01) !important;
-    font-size:20px;
+    font-size:1.2em;
     border:none !important;
 }
 body {
@@ -53,12 +53,29 @@ body {
     cursor:default;
 }
 #central-part {
-    margin-top:5em;
+    margin-top:3em;
 }
-.page-header {
-    text-shadow: 1px 1px 1px black,
-    -1px 1px 1px black,
-    -1px -1px 1px black,
-    1px -1px 1px black
-;
+#instruction {
+    margin:1em;
+    /*text-shadow: 1px 1px 1px black,*/
+    /*-1px 1px 1px black,*/
+    /*-1px -1px 1px black,*/
+    /*1px -1px 1px black*/
+/*;*/
+}
+#navbar-lower {
+    padding-left:0;
+}
+#container-lower {
+    padding-left:0;
+}
+#container-lower a {
+    padding-top:0;
+}
+#container-upper {
+}
+#codeSource {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

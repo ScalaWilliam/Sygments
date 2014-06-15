@@ -9,7 +9,7 @@ class SygmentsServlet(lexers: Vector[Lexer], highlighter: Highlighter) extends S
   post("/highlight/:languageAlias") {
     val code = Code(request.body)
     val languageAlias = LanguageAlias(params("languageAlias"))
-    <response>
+    <highlight-response>
       <input>{PCData(code.value)}</input>
       <language-alias>{PCData(languageAlias.value)}</language-alias>
       {
@@ -18,7 +18,7 @@ class SygmentsServlet(lexers: Vector[Lexer], highlighter: Highlighter) extends S
           case Right(HighlightedCode(value)) => <highlighted>{PCData(value)}</highlighted>
         }
       }
-    </response>
+    </highlight-response>
   }
 
   get("/lexers") {

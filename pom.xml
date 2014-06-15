@@ -18,12 +18,24 @@
             <url>https://www.scalawilliam.com/</url>
         </developer>
     </developers>
+    <repositories>
+        <repository>
+            <id>Sonatype Releases</id>
+            <url>http://oss.sonatype.org/content/repositories/releases</url>
+        </repository>
+    </repositories>
     <properties>
         <scala.version>2.11.1</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <contextPath>/</contextPath>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.scalacheck</groupId>
+            <artifactId>scalacheck_2.11</artifactId>
+            <version>1.11.4</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

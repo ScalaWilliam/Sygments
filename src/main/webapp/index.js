@@ -18,7 +18,8 @@ sygmentsApp.controller('Sygments', function($scope, $http, $fileUploader) {
     });
 
     $scope.state = {
-        code: ["package com.scalawilliam.sygments",
+        code: "",
+        xcode: ["package com.scalawilliam.sygments",
             "",
             "import org.scalatest.{FunSuite, FunSuiteLike, Matchers}",
             "import org.scalatra.test.scalatest.ScalatraSuite",
@@ -32,25 +33,47 @@ sygmentsApp.controller('Sygments', function($scope, $http, $fileUploader) {
             "  }",
             "}"].join("\n"),
         language: "Scala",
-        highlighted: ""
+        highlighted: "",
+        sampled: false
+//        sampleSource: "https://github.com/ScalaWilliam/Sygments/blob/master/src/test/scala/com/scalawilliam/sygments/SygmentsServletTest.scala"
+
     };
 
     $scope.languages = [
         'Scala',
-        'JavaScript',
-        'C#',
-        'Java',
+        'XQuery',
         'CoffeeScript',
+        'C#',
+        'JavaScript',
+        'Java',
         'XSLT',
         'XML',
-        'XQuery',
         'F#',
         'Python',
         'HTML',
         'Ruby',
-        'Haskell'
+        'Haskell',
+        'OCaml',
+        'Erlang',
+        'Lua',
+        'Clojure'
     ];
 
+    $http.get("samples.xml").success(function(data) {
+        var samples = $($.parseXML(data)).find("sample").map(function() {
+            return {
+                language:$(this).attr("language"),
+                source:$(this).attr("source"),
+                code: $(this).text()
+            };
+        }).get();
+        samples.sort(Position);
+        $scope.samples = samples;
+        function Position(a, b) {
+            return ($scope.languages.indexOf(a.language) > $scope.languages.indexOf(b.language)) ? 1 : -1;
+        }
+        $scope.loadSample(samples.filter(function(sample){return sample.language == 'Scala'})[0]);
+    });
 
     $http.get("styles/internal").success(function(data) {
         $scope.styles = $($.parseXML(data)).find("style").map(function() { return $(this).text(); }).get().concat(customStyles);
@@ -60,7 +83,18 @@ sygmentsApp.controller('Sygments', function($scope, $http, $fileUploader) {
         $http.post("highlight/" + encodeURIComponent($scope.state.language), $scope.state.code).success(function(data) {
             $scope.contents = $($.parseXML(data)).find("highlighted").text();
         });
-    }
+    };
+
+    $scope.loadSample = function(sample) {
+        $scope.state.language = sample.language;
+        $scope.state.code = sample.code;
+        $scope.state.sampled = true;
+        $scope.state.sampleSource = sample.source;
+        $scope.$apply();
+        $scope.highlight();
+        // important
+        $('#switch-Scala').trigger('change.bs.dropdown.data-api')
+    };
 
     $scope.highlight();
 

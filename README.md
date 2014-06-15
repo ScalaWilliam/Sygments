@@ -73,3 +73,9 @@ Highlighter interface performance:
     * ScalaTest
     * [scalatra-scalatest](http://www.scalatra.org/2.3/guides/testing/scalatest.html)
     * [scalatest-maven-plugin](http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin)
+
+## Copyrights
+
+Please refer to source material for copyright detail. The intention of this code is fair use, attributing authors via a web link.
+
+Sygments back end code is available under the MIT license.
