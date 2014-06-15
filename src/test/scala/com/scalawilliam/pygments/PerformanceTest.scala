@@ -7,7 +7,7 @@ import org.scalatest.{FunSuite, Matchers}
 class PerformanceTest extends FunSuite with Matchers with TimeMeasurement with TestCodeData {
 
   test("Performance with size") {
-    val highlighter = Highlighter.createHighlighter._2
+    val (_, highlighter) = Highlighter.createHighlighter
     val result = for {
       codeSize <- 1 to 7
       newCode = Code((code.value + "\n") * codeSize)

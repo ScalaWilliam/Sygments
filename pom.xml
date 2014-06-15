@@ -18,12 +18,6 @@
             <url>https://www.scalawilliam.com/</url>
         </developer>
     </developers>
-    <repositories>
-        <repository>
-            <id>Sonatype Releases</id>
-            <url>http://oss.sonatype.org/content/repositories/releases</url>
-        </repository>
-    </repositories>
     <properties>
         <scala.version>2.11.1</scala.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -199,6 +193,10 @@
             <id>typesafe</id>
             <name>typesafe-releases</name>
             <url>http://repo.typesafe.com/typesafe/releases</url>
+        </repository>
+        <repository>
+            <id>Sonatype Releases</id>
+            <url>http://oss.sonatype.org/content/repositories/releases</url>
         </repository>
     </repositories>
 
