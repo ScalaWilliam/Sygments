@@ -32,7 +32,7 @@ Out of the initial manual work, I created this nice usable app.
 
 ## Instructions
 
-1. Install Java and Maven
+1. Install Java and SBT
 2. In a terminal, run: ```mvn clean compile test jetty:start -Djetty.port=7874```
 3. Go to [http://localhost:7874/](http://localhost:7874/)
 
@@ -51,7 +51,7 @@ Highlighter interface performance:
   * HTML5
   * AJAX
   * REST
-  * jetty-maven-plugin
+  * xsbt
   * Front-end:
     * AngularJS
     * Webjars
@@ -63,7 +63,6 @@ Highlighter interface performance:
     * [Bootstrap enhancement](http://behigh.github.io/bootstrap_dropdowns_enhancement/)
   * Back-end:
     * Scala
-    * scala-maven-plugin
     * scala-xml
     * Jetty
     * Jython
