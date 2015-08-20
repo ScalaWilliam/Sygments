@@ -1,7 +1,7 @@
-<samples xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../schemas/samples.xsd">
-    <sample language="Scala" source="https://github.com/ScalaWilliam/xs4s"><![CDATA[val xmlEventReader = xmlInputFactory.createXMLEventReader(inputStream)
+val xmlEventReader = xmlInputFactory.createXMLEventReader(inputStream)
 case class InitialOpen(value: Double)
 case class Person(name: String, income: Double)
+
 // here we capture XML
 val captures = List(
   ("site" \ "open_auctions" \ "open_auction" \ "initial") {
@@ -25,6 +25,3 @@ val collectedData = TreeExtractor(captures).apply(xmlEventReader).toList
       case _ => false
     }
   } yield <items name={name}>{noItems.toString}</items>}</out>
-
-]]></sample>
-</samples>

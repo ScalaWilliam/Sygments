@@ -1,0 +1,55 @@
+@(samples: List[(com.scalawilliam.pygments.Highlighter#Language, Sample)], styles: List[com.scalawilliam.pygments.Highlighter#Style], languages: List[com.scalawilliam.pygments.Highlighter#Language])(implicit req: RequestHeader)
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Sygments</title>
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css"/>
+
+    </head>
+    <body>
+        <ul id="dropdown-samples" class="dropdown-content">
+        @for((language, sample) <- samples) {
+            <li><a data-sample-path="@sample.path" data-sample-credit="@sample.credit" data-sample-language="@language.id">@language.fullName</a></li>
+        }
+        </ul>
+        <ul id="dropdown-languages" class="dropdown-content">
+        @for(language <- languages) {
+            <li><a data-language-id="@language.id">@language.fullName</a></li>
+        }
+        </ul>
+        <ul id="dropdown-styles" class="dropdown-content">
+        @for(style <- styles) {
+            <li><a data-style-id=@style.id data-style-css="@style.css">@style.id</a></li>
+        }
+        </ul>
+        <nav>
+
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Sygments</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a target="_blank" href="https://github.com/ScalaWilliam/Sygments/">GitHub</a></li>
+                    <li><a target="_blank" href="https://www.scalawilliam.com/">ScalaWilliam</a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown-styles">
+                        Styles<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown-languages">
+                        Languages<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown-samples">
+                        Samples<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <style type="text/css" id="rendering-style" scoped></style>
+        <div id="render-to">
+
+        </div>
+        @helper.javascriptRouter("jsRoutes")(
+            routes.javascript.Main.highlight
+        )
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+        <script src="@routes.Assets.at("main.js")"></script>
+
+    </body>
+
+</html>

@@ -4,10 +4,38 @@ import javax.inject.Singleton
 
 import com.scalawilliam.pygments.Highlighter
 import play.api.libs.json.Json
-import play.api.mvc.{BodyParsers, Action, Controller}
+import play.api.mvc.{Action, BodyParsers, Controller, RequestHeader}
+
+case class Sample(language: String, credit: String, path: String) {
+  def absolutePath(implicit requestHeader: RequestHeader) =
+    copy(path = routes.Assets.at(path).absoluteURL())
+}
 
 @Singleton
 class Main() extends Controller {
+
+  val samples = List(
+    Sample(
+      language = "scala",
+      credit = "https://github.com/ScalaWilliam/xs4s",
+      path = "sample.scala"
+    )
+  )
+
+  implicit val samplesFmt = Json.format[Sample]
+
+  def index = Action { implicit request =>
+    Ok(views.html.index.apply(
+      samples = {
+        for {
+          sample <- samples
+          language <- highlighter.languages.get(sample.language)
+        } yield language -> sample.absolutePath
+      }.sortBy(_._1.fullName),
+      styles = highlighter.styles.values.toList.sortBy(_.id),
+      languages = highlighter.languages.values.toList.sortBy(_.fullName)
+    ))
+  }
 
   val highlighter = new Highlighter()
 

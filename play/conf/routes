@@ -1,3 +1,5 @@
+GET         /                              @controllers.Main.index
 POST        /highlight/:languageId/        @controllers.Main.highlight(languageId)
 GET         /lexers/                       @controllers.Main.listLexers
 GET         /styles/                       @controllers.Main.listStyles
+GET         /assets/*file                  controllers.Assets.at(path="/public", file)
