@@ -10,7 +10,7 @@ Sygments lets you try different Pygments themes against a range of programming l
 
 It is especially suited for creating presentations.
 
-See the demo at [Scala William's Sygments](https://www.scalawilliam.com/1406/sygments) website.
+See the demo at (http://demo.scalawilliam.com/sygments/).
 
 ## Sample
 
@@ -33,8 +33,8 @@ Out of the initial manual work, I created this nice usable app.
 ## Instructions
 
 1. Install Java and SBT
-2. In a terminal, run: ```mvn clean compile test jetty:start -Djetty.port=7874```
-3. Go to [http://localhost:7874/](http://localhost:7874/)
+2. run ```sbt play/run```
+3. Go to (http://localhost:9000/)
 
 ### Reverse-proxying 
 
@@ -48,30 +48,11 @@ Highlighter interface performance:
 
 ## Technology stack
 
-  * HTML5
-  * AJAX
-  * REST
-  * xsbt
-  * Front-end:
-    * AngularJS
-    * Webjars
-    * Bootstrap
-    * Angular-UI
-    * jQuery
-    * [angular-file-upload](https://github.com/danialfarid/angular-file-upload)
-    * [Bootswatch](http://bootswatch.com/darkly/)
-    * [Bootstrap enhancement](http://behigh.github.io/bootstrap_dropdowns_enhancement/)
-  * Back-end:
-    * Scala
-    * scala-xml
-    * Jetty
-    * Jython
-    * [Pygments](http://pygments.org/)
-    * [Scalactic](http://scalatest.org/release_notes/2.2.0)
-  * Test:
-    * ScalaTest
-    * [scalatra-scalatest](http://www.scalatra.org/2.3/guides/testing/scalatest.html)
-    * [scalatest-maven-plugin](http://www.scalatest.org/user_guide/using_the_scalatest_maven_plugin)
+  * sbt
+  * Play 2.4
+  * materialize-css
+  * Jython
+  * Scalatest
 
 ## Copyrights
 

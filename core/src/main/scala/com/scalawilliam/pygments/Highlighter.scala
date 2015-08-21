@@ -29,6 +29,7 @@ class Highlighter() {
   case class Style(id: String, css: String)
 
   val styles: Map[String, Style] = {
+
     for {
       styleItem <- interpreter.eval(
         """[(style, HtmlFormatter(style = style).get_style_defs()) for style in get_all_styles()]""").asIterable().asScala

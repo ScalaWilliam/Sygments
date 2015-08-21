@@ -2,11 +2,13 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8">
         <title>Sygments</title>
-        <link type="text/css" rel="stylesheet" href="@routes.Assets.at("main.css")"/>
-
-        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css"/>
+        <link type="text/css" rel="stylesheet" href="@routes.Assets.at("main.css")">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+        <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.1/spectrum.min.css">
 
     </head>
     <body>
@@ -32,6 +34,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a target="_blank" href="https://github.com/ScalaWilliam/Sygments/">GitHub</a></li>
                     <li><a target="_blank" href="https://www.scalawilliam.com/">ScalaWilliam</a></li>
+                    @*<li><a href="#modal1" class="modal-trigger">Change background</a></li>*@
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown-styles">
                         Styles<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown-languages">
@@ -41,6 +44,18 @@
                 </ul>
             </div>
         </nav>
+
+        @*<div id="modal1" class="modal">*@
+            @*<div class="modal-content">*@
+                @*<h4>Modal Header</h4>*@
+                @*<input type="color" id="color-picker" value="#ffffff"/>*@
+            @*</div>*@
+            @*<div class="modal-footer">*@
+                @*<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>*@
+            @*</div>*@
+        @*</div>*@
+
+
 
         <div id="main-area" class="section">
             <div class="row">
@@ -54,7 +69,7 @@
                 </form>
                 <div class="col s6">
 
-                    <style type="text/css" id="rendering-style" scoped></style>
+                    <style type="text/css" id="rendering-style" scoped="scoped"></style>
                     <div id="render-to">
                     </div>
                 </div>
@@ -66,6 +81,7 @@
         )
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.7.1/spectrum.min.js"></script>
         <script src="@routes.Assets.at("main.js")"></script>
 
     </body>
