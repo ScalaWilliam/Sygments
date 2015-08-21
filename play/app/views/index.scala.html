@@ -4,14 +4,16 @@
     <head>
         <meta charset="utf-8"/>
         <title>Sygments</title>
+        <link type="text/css" rel="stylesheet" href="@routes.Assets.at("main.css")"/>
+
         <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css"/>
 
     </head>
     <body>
         <ul id="dropdown-samples" class="dropdown-content">
-        @for((language, sample) <- samples) {
-            <li><a data-sample-path="@sample.path" data-sample-credit="@sample.credit" data-sample-language="@language.id">@language.fullName</a></li>
-        }
+            @for((language, sample) <- samples) {
+                <li><a data-sample-path="@sample.path" data-sample-credit="@sample.credit" data-sample-language="@language.id">@language.fullName</a></li>
+            }
         </ul>
         <ul id="dropdown-languages" class="dropdown-content">
         @for(language <- languages) {
@@ -20,7 +22,7 @@
         </ul>
         <ul id="dropdown-styles" class="dropdown-content">
         @for(style <- styles) {
-            <li><a data-style-id=@style.id data-style-css="@style.css">@style.id</a></li>
+            <li><a data-style-id=@style.id data-style-css=" @style.css">@style.id </a></li>
         }
         </ul>
         <nav>
@@ -39,10 +41,26 @@
                 </ul>
             </div>
         </nav>
-        <style type="text/css" id="rendering-style" scoped></style>
-        <div id="render-to">
 
+        <div id="main-area" class="section">
+            <div class="row">
+                <form class="col s6">
+                    <div class="row">
+                        <div class="input-field">
+                                <textarea id="code-input" class="materialize-textarea"></textarea>
+                                <label for="code-input">Code</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="col s6">
+
+                    <style type="text/css" id="rendering-style" scoped></style>
+                    <div id="render-to">
+                    </div>
+                </div>
+            </div>
         </div>
+
         @helper.javascriptRouter("jsRoutes")(
             routes.javascript.Main.highlight
         )
