@@ -1,0 +1,11 @@
+body {
+    background-image:url('Wallpaper_1_by_Antscape.jpg');
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+#code-input {
+    background-color: whitesmoke;
+    width:100%;
+    height:20em;
+    font-family: Consolas, "DejaVu Sans Mono", monospace;
+}
