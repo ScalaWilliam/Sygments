@@ -2,7 +2,7 @@ package com.scalawilliam.pygments
 
 trait TestCodeData {
 
-  val languageAlias = "Scala"
+  val languageAlias = "scala"
 
   val code = """package com.scalawilliam
                     |
