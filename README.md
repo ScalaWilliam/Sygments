@@ -10,7 +10,7 @@ Sygments lets you try different Pygments themes against a range of programming l
 
 It is especially suited for creating presentations.
 
-See the demo at (http://demo.scalawilliam.com/sygments/).
+See the demo at https://sygments.herokuapp.com/
 
 ## Sample
 
