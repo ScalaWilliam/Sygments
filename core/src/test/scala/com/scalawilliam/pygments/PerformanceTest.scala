@@ -5,7 +5,7 @@ import org.scalatest.{FunSuite, Matchers}
 
 class PerformanceTest extends FunSuite with Matchers with TimeMeasurement with TestCodeData {
 
-  test("Performance with size") {
+  ignore("Performance with size") {
     val highlighter = new Highlighter().languages(languageAlias)
     val result = for {
       codeSize <- 1 to 7

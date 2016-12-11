@@ -2,7 +2,7 @@
 
 ## What is it?
 
-Sygments is a syntax highlighting service and HTML5 app that uses [Pygments](http://pygments.org/).
+Sygments is a syntax highlighting service and HTML5 app that uses Jython and [Pygments](http://pygments.org/).
 
 Pygments is an excellent program syntax highlighter developed in Python.
 
